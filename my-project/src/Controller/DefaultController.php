@@ -15,6 +15,7 @@ class DefaultController extends AbstractController
     {
         $Archivo_parseado = Yaml::parseFile(__DIR__.'/preguntas.yml');
         $Preguntas = $Archivo_parseado["preguntas"];
+        shuffle($Preguntas);   
 
         //dump($Preguntas);
 

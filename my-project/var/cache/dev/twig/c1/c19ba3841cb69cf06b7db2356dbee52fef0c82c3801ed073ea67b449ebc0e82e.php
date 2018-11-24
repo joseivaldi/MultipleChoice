@@ -97,21 +97,20 @@ class __TwigTemplate_30780dde6e0161c190663413c783c42453aa242444b078e253415aafa70
         <br>
         <br>
         <div class=\"Caja-de-rtas\">
-
-            ";
+                ";
+            // line 39
+            $context["respuestas"] = twig_get_attribute($this->env, $this->source, (isset($context["Respuestas_mezcladas"]) || array_key_exists("Respuestas_mezcladas", $context) ? $context["Respuestas_mezcladas"] : (function () { throw new Twig_Error_Runtime('Variable "Respuestas_mezcladas" does not exist.', 39, $this->source); })()), ((isset($context["numero_pregunta"]) || array_key_exists("numero_pregunta", $context) ? $context["numero_pregunta"] : (function () { throw new Twig_Error_Runtime('Variable "numero_pregunta" does not exist.', 39, $this->source); })()) - 1), array(), "array");
             // line 40
-            $context["respuestas"] = twig_get_attribute($this->env, $this->source, (isset($context["Respuestas_mezcladas"]) || array_key_exists("Respuestas_mezcladas", $context) ? $context["Respuestas_mezcladas"] : (function () { throw new Twig_Error_Runtime('Variable "Respuestas_mezcladas" does not exist.', 40, $this->source); })()), ((isset($context["numero_pregunta"]) || array_key_exists("numero_pregunta", $context) ? $context["numero_pregunta"] : (function () { throw new Twig_Error_Runtime('Variable "numero_pregunta" does not exist.', 40, $this->source); })()) - 1), array(), "array");
-            // line 41
             echo "
                 ";
-            // line 42
+            // line 41
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["respuestas"]) || array_key_exists("respuestas", $context) ? $context["respuestas"] : (function () { throw new Twig_Error_Runtime('Variable "respuestas" does not exist.', 42, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["respuestas"]) || array_key_exists("respuestas", $context) ? $context["respuestas"] : (function () { throw new Twig_Error_Runtime('Variable "respuestas" does not exist.', 41, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["respuesta"]) {
-                // line 43
+                // line 42
                 echo "
-                    (__) ";
-                // line 44
+                    __) ";
+                // line 43
                 echo twig_escape_filter($this->env, $context["respuesta"], "html", null, true);
                 echo "
 
@@ -123,7 +122,32 @@ class __TwigTemplate_30780dde6e0161c190663413c783c42453aa242444b078e253415aafa70
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['respuesta'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 49
+            echo "
+                ";
             // line 50
+            if ( !twig_in_filter("ocultar_opcion_todas_las_anteriores", twig_get_array_keys_filter($context["pregunta"]))) {
+                // line 51
+                echo "
+                    __) Todas las anteriores.
+
+                    <br>
+                    <br>
+
+                ";
+            }
+            // line 58
+            echo "
+                ";
+            // line 59
+            if ( !twig_in_filter("ocultas_opcion_ninguna_de_las_anteriores", twig_get_array_keys_filter($context["pregunta"]))) {
+                // line 60
+                echo "
+                    __) Ninguna de las anteriores.
+
+                ";
+            }
+            // line 64
             echo "
         </div>
 
@@ -132,16 +156,16 @@ class __TwigTemplate_30780dde6e0161c190663413c783c42453aa242444b078e253415aafa70
     <br>
 
     ";
-            // line 57
-            $context["numero_pregunta"] = ((isset($context["numero_pregunta"]) || array_key_exists("numero_pregunta", $context) ? $context["numero_pregunta"] : (function () { throw new Twig_Error_Runtime('Variable "numero_pregunta" does not exist.', 57, $this->source); })()) + 1);
-            // line 58
+            // line 71
+            $context["numero_pregunta"] = ((isset($context["numero_pregunta"]) || array_key_exists("numero_pregunta", $context) ? $context["numero_pregunta"] : (function () { throw new Twig_Error_Runtime('Variable "numero_pregunta" does not exist.', 71, $this->source); })()) + 1);
+            // line 72
             echo "
 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pregunta'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 60
+        // line 74
         echo "
 ";
         
@@ -164,7 +188,7 @@ class __TwigTemplate_30780dde6e0161c190663413c783c42453aa242444b078e253415aafa70
 
     public function getDebugInfo()
     {
-        return array (  145 => 60,  138 => 58,  136 => 57,  127 => 50,  115 => 44,  112 => 43,  108 => 42,  105 => 41,  103 => 40,  92 => 34,  87 => 31,  83 => 30,  80 => 29,  78 => 28,  53 => 5,  44 => 4,  15 => 1,);
+        return array (  169 => 74,  162 => 72,  160 => 71,  151 => 64,  145 => 60,  143 => 59,  140 => 58,  131 => 51,  129 => 50,  126 => 49,  114 => 43,  111 => 42,  107 => 41,  104 => 40,  102 => 39,  92 => 34,  87 => 31,  83 => 30,  80 => 29,  78 => 28,  53 => 5,  44 => 4,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -207,17 +231,31 @@ class __TwigTemplate_30780dde6e0161c190663413c783c42453aa242444b078e253415aafa70
         <br>
         <br>
         <div class=\"Caja-de-rtas\">
-
-            {% set respuestas = Respuestas_mezcladas[numero_pregunta-1] %}
+                {% set respuestas = Respuestas_mezcladas[numero_pregunta-1] %}
 
                 {% for respuesta in respuestas %}
 
-                    (__) {{respuesta}}
+                    __) {{respuesta}}
 
                     <br>
                     <br>
 
                 {% endfor %}
+
+                {% if not(\"ocultar_opcion_todas_las_anteriores\" in pregunta|keys) %}
+
+                    __) Todas las anteriores.
+
+                    <br>
+                    <br>
+
+                {% endif %}
+
+                {% if not(\"ocultas_opcion_ninguna_de_las_anteriores\" in pregunta|keys) %}
+
+                    __) Ninguna de las anteriores.
+
+                {% endif %}
 
         </div>
 
@@ -229,6 +267,6 @@ class __TwigTemplate_30780dde6e0161c190663413c783c42453aa242444b078e253415aafa70
 
 {% endfor %}
 
-{% endblock %}", "default/index.html.twig", "C:\\Users\\jose-\\OneDrive\\Desktop\\MC2\\MultipleChoice\\my-project\\templates\\default\\index.html.twig");
+{% endblock %}", "default/index.html.twig", "C:\\Users\\LENOVO\\Desktop\\IPS\\dagos\\MultipleChoice\\my-project\\templates\\default\\index.html.twig");
     }
 }

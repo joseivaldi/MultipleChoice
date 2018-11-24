@@ -18,7 +18,6 @@ class DefaultController extends AbstractController
 
         //dump($Preguntas);
 
-        return $this->render('default/index.html.twig', ["preguntas" => $Pregunta
-        ]);
+        return $this->render('default/index.html.twig', ["preguntas" => $Preguntas]);
     }
 }

@@ -2,13 +2,34 @@
 
 
 {% block body %}
-<!- - <style>
+<!-- <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style> - ->
+</style> -->
 
-<div class="example-wrapper">
+<style>
 
+.Caja-de-preguntas {
+    width: 50%;
+      border: 1px solid black;
+      padding-top: 15px;
+    padding-right: 0px;
+    padding-bottom: 50px;
+    padding-left:     10px;
+}
 
-</div>
+</style>
+
+{% for pregunta in preguntas %}
+
+    <div class="Caja-de-preguntas">
+
+        {{ pregunta.descripcion }}
+
+    </div>
+
+    <br>
+
+{% endfor %}
+
 {% endblock %}

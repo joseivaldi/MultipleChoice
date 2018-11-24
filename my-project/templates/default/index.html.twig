@@ -20,16 +20,20 @@
 }
 
 </style>
+{% set numero_pregunta = 1 %}
 
 {% for pregunta in preguntas %}
 
     <div class="Caja-de-preguntas">
+        
 
-        {{ pregunta.descripcion }}
+        {{ numero_pregunta }}) {{ pregunta.descripcion }}
 
     </div>
 
     <br>
+    
+    {% set numero_pregunta = numero_pregunta + 1 %}
 
 {% endfor %}
 

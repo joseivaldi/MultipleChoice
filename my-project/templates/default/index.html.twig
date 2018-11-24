@@ -14,26 +14,47 @@
       border: 1px solid black;
       padding-top: 15px;
     padding-right: 0px;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     padding-left:     10px;
     font-weight: bold;
 }
 
+.Caja-de-rtas {
+    font-weight: normal;
+}
+
 </style>
+
 {% set numero_pregunta = 1 %}
 
 {% for pregunta in preguntas %}
 
     <div class="Caja-de-preguntas">
-        
 
         {{ numero_pregunta }}) {{ pregunta.descripcion }}
+
+        <br>
+        <br>
+        <div class="Caja-de-rtas">
+
+            {% set respuestas = Respuestas_mezcladas[numero_pregunta-1] %}
+
+                {% for respuesta in respuestas %}
+
+                    (__) {{respuesta}}
+
+                    <br>
+                    <br>
+
+                {% endfor %}
+
+        </div>
 
     </div>
 
     <br>
-    
-    {% set numero_pregunta = numero_pregunta + 1 %}
+
+    {% set numero_pregunta = numero_pregunta+1 %}
 
 {% endfor %}
 

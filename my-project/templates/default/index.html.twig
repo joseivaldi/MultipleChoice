@@ -2,20 +2,15 @@
 
 
 {% block body %}
-<!-- <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style> -->
 
 <style>
 
 .Caja-de-preguntas {
-    width: 50%;
     border: 1px solid black;
     padding-top: 15px;
     padding-right: 0px;
     padding-bottom: 20px;
-    padding-left:     10px;
+    padding-left:   30px;
     font-weight: bold;
 }
 
@@ -23,59 +18,96 @@
     font-weight: normal;
 }
 
+.left{
+    float:left;
+    text-align: left;
+}
+
+.right{
+    float:center;
+    text-align: center;
+}
 </style>
 
-{% set numero_pregunta = 1 %}
+<div>
+    <div class="left">
+        <b>Nombre y Apellido ____________________________________</b>
+    </div>
+    
+    <div class="right">
+        
+        <div class="left">
+            <b style="padding-left: 250px">Evaluación número 4 - 28/09/2017 - IPS.</b>
+        </div>
 
-{% for pregunta in preguntas %}
+        <div class="right">
+            <b>TEMA 1</b>
+        </div>
+        
+    </div>
+    
+    
+    
+    <hr>
+</div>
 
-    <div class="Caja-de-preguntas">
+<div id="Cuerpo-Examen">
+    {% set numero_pregunta = 1 %}
 
-        {{ numero_pregunta }}) {{ pregunta.descripcion }}
+    {% for pregunta in preguntas %}
 
-        <br>
-        <br>
-        <div class="Caja-de-rtas">
-            {% set respuestas = Respuestas_mezcladas[numero_pregunta-1] %}
-            {% set Letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T", "U","V","W","X","Y","Z"] %}
-            {% set Contador_letras = 0 %}
+        <div class="Caja-de-preguntas">
+            
+            {{ numero_pregunta }}) {{ pregunta.descripcion }}
 
-                {% for respuesta in respuestas %}
+            <br>
+            <br>
+            <div class="Caja-de-rtas">
+                
+                {% set respuestas = Respuestas_mezcladas[numero_pregunta-1] %}
+                {% set Letras = ["A","B","C","D","E","F","G","H","I"] %}
+                {% set Contador_letras = 0 %}
 
-                    {{ Letras[Contador_letras] }}) {{respuesta}}
+                    {% for respuesta in respuestas %}
 
-                    <br>
-                    <br>
+                        {{ Letras[Contador_letras] }}) {{respuesta}}
 
-                    {% set Contador_letras = Contador_letras+1 %}
-                    
-                {% endfor %}
+                        <br>
+                        <br>
 
-                {% if not("ocultar_opcion_todas_las_anteriores" in pregunta|keys) %}
+                        {% set Contador_letras = Contador_letras+1 %}
+                        
+                    {% endfor %}
 
-                    {% set Contador_letras = Contador_letras+1 %}
-                    {{ Letras[Contador_letras] }}) Todas las anteriores.
+                    {% if not("ocultar_opcion_todas_las_anteriores" in pregunta|keys) %}
 
-                    <br>
-                    <br>
+                        {% set Contador_letras = Contador_letras+1 %}
+                        {{ Letras[Contador_letras] }}) Todas las anteriores.
 
-                {% endif %}
+                        <br>
+                        <br>
 
-                {% if not("ocultas_opcion_ninguna_de_las_anteriores" in pregunta|keys) %}
+                    {% endif %}
 
-                    {% set Contador_letras = Contador_letras+1 %}
-                    {{ Letras[Contador_letras] }}) Ninguna de las anteriores.
+                    {% if not("ocultas_opcion_ninguna_de_las_anteriores" in pregunta|keys) %}
 
-                {% endif %}
+                        {% set Contador_letras = Contador_letras+1 %}
+                        {{ Letras[Contador_letras] }}) Ninguna de las anteriores.
+
+                    {% endif %}
+
+            </div>
 
         </div>
 
-    </div>
+        <br>
+        
+        {% set numero_pregunta = numero_pregunta+1 %}
 
-    <br>
+    {% endfor %}
 
-    {% set numero_pregunta = numero_pregunta+1 %}
+</div>
 
-{% endfor %}
+<a href="/MostrarRtas" target="_blank" id="MostrarRtas" type="button">Mostrar Examen Resuelto</a>
 
 {% endblock %}

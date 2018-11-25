@@ -51,19 +51,10 @@ class DefaultController extends AbstractController
 
     public function index()
     {
-        $Preguntas = $Archivo_parseado["preguntas"];        #tiene un elemento que tiene las 25 preguntas
-        shuffle($Preguntas);                                #Mezclamos las pregs
-
-        $Respuestas_mezcladas= [];                      #Mezclar las rtas
-
-        foreach($Preguntas as $pregunta){
-            $mezcla_preguntas = array_merge($pregunta["respuestas_correctas"], $pregunta["respuestas_incorrectas"]);
-            shuffle($mezcla_preguntas); 
-            $Respuestas_mezcladas[]=$mezcla_preguntas;
-
-        }
-        //dump($Preguntas);
-
+        $PreguntasyRtas_Mezcladas = $this->Mezclar_Preguntas();
+        $Preguntas = $PreguntasyRtas_Mezcladas[0];
+        $Respuestas_mezcladas = $PreguntasyRtas_Mezcladas[1];
+        
         return $this->render('default/index.html.twig', ["preguntas" => $Preguntas, "Respuestas_mezcladas" => $Respuestas_mezcladas]);
     }
 }

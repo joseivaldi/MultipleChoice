@@ -1,0 +1,110 @@
+{% extends 'basertas.html.twig' %}
+
+
+{% block body %}
+
+<style>
+
+.Caja-de-preguntas {
+  	border: 1px solid black;
+  	padding-top: 15px;
+	padding-right: 0px;
+    padding-bottom: 20px;
+    padding-left: 	30px;
+    font-weight: bold;
+}
+
+.Caja-de-rtas {
+    font-weight: normal;
+}
+
+.rta-correcta {
+    color: blue;
+}
+
+</style>
+
+<div id="Cuerpo-Examen">
+	{% set numero_pregunta = 1 %}
+
+	{% for pregunta in preguntas %}
+
+		<div class="Caja-de-preguntas">
+	    	
+	    	{{ numero_pregunta }}) {{ pregunta.descripcion }}
+
+	    	<br>
+	    	<br>
+	    	<div class="Caja-de-rtas">
+	    		
+	    		{% set respuestas = Respuestas_mezcladas[numero_pregunta-1] %}
+	    		{% set Letras = ["A","B","C","D","E","F","G","H","I"] %}
+	    		{% set Contador_letras = 0 %}
+
+					{% for respuesta in respuestas %}
+
+						{% if (respuesta in pregunta.respuestas_correctas) and (pregunta.respuestas_correctas|length == 1) %}
+
+							<a class="rta-correcta"> {{ Letras[Contador_letras] }}) {{respuesta}} </a>
+
+						{% else %}
+
+							{{ Letras[Contador_letras] }}) {{respuesta}}
+
+						{% endif %}
+
+	    				{% set Contador_letras = Contador_letras+1 %}
+
+	    				<br>
+		    			<br>
+	    				
+	    			{% endfor %}
+
+	    			{% if not("ocultar_opcion_todas_las_anteriores" in pregunta|keys) %}
+
+	    				{% if pregunta.respuestas_correctas|length > 1 %}
+	    					{% set Contador_letras = Contador_letras+1 %}
+		    				<a class="rta-correcta">{{ Letras[Contador_letras] }}) Todas las anteriores.</a>
+
+		    				<br>
+		    				<br>
+	    				{% else %}
+	    					{% set Contador_letras = Contador_letras+1 %}
+		    				{{ Letras[Contador_letras] }}) Todas las anteriores.
+
+		    				<br>
+		    				<br>
+						{% endif %}
+
+	    			{% endif %}
+
+	    			{% if not("ocultas_opcion_ninguna_de_las_anteriores" in pregunta|keys) %}
+
+	    				{% if pregunta.respuestas_correctas|length == 0 %}
+		    				{% set Contador_letras = Contador_letras+1 %}
+			    				<a class="rta-correcta">{{ Letras[Contador_letras] }}) Ninguna de las anteriores.</a>
+
+			    				<br>
+			    				<br>
+		    				{% else %}
+		    					{% set Contador_letras = Contador_letras+1 %}
+			    				{{ Letras[Contador_letras] }}) Ninguna de als anteriores.
+
+			    				<br>
+			    				<br>
+						{% endif %}
+
+	    			{% endif %}
+
+	    	</div>
+
+		</div>
+
+		<br>
+		
+		{% set numero_pregunta = numero_pregunta+1 %}
+
+	{% endfor %}
+
+</div>
+{% endblock %}

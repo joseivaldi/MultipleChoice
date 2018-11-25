@@ -1,10 +1,5 @@
 # MultipleChoice
 
-
-[![Build Status](https://travis-ci.org/mariano-dagostino/MultipleChoiceExams.svg?branch=master)](https://travis-ci.org/mariano-dagostino/MultipleChoiceExams)
-[![Coverage Status](https://coveralls.io/repos/mariano-dagostino/MultipleChoiceExams/badge.svg?branch=master&service=github)](https://coveralls.io/github/mariano-dagostino/MultipleChoiceExams?branch=master)
-
-
 MultipleChoiceExams is a set of PHP clases to manage Multiple Choice Exams. This
 clases are able to adapt to different CMS, as Drupal, so the CMS only have the
 responsability of managing the content of the database.

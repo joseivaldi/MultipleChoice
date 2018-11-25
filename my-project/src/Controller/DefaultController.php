@@ -19,6 +19,35 @@ class DefaultController extends AbstractController
 
     }
 
+    public function Mezclar_Preguntas(){
+
+        $Preguntas = $this->Parsear_Archivo("/preguntas.yml");
+        $Preguntas = $Preguntas["preguntas"];
+        shuffle($Preguntas);
+
+        $Respuestas_mezcladas = []
+
+
+        //Este for me toma una pregunta de la lista de preguntas
+        foreach ($Preguntas  as $pregunta){     
+            $mezcla_preguntas = array_merge($pregunta["respuestas_correctas"], $pregunta["respuestas_incorrectas"]);
+            shuffle($mezcla_preguntas);
+            $Respuestas_mezcladas [] = $mezcla_preguntas;
+        }
+
+        //Escribo las preguntas en un archivo yml para cuando genero las rtas
+        $Preguntas_de_Ultimo_Examen = Yaml :: dump ($Preguntas);
+
+        file_put_contents(__DIR__.'/preguntas_ultimo_examen.yml' ,$Preguntas_de_Ultimo_Examen);
+
+        //Lo mismo para las rtas
+        $Rtas_de_Ultimo_Examen = Yaml :: dump($Respuestas_mezcladas);
+
+        file_put_contents(__DIR__.'/rtas_ultimo_examen.yml', $Rtas_de_Ultimo_Examen);
+
+        return [$Preguntas, $Respuestas_mezcladas];
+        
+    }
 
     public function index()
     {

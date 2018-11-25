@@ -11,9 +11,17 @@ class DefaultController extends AbstractController
     /**
      * @Route("/default", name="default")
      */
+    public function Parsear_Archivo ($Archivo){
+
+        $Archivo_parseado = Yaml :: parseFile(__DIR__.$Archivo);
+
+        return $Archivo_parseado;
+
+    }
+
+
     public function index()
     {
-        $Archivo_parseado = Yaml::parseFile(__DIR__.'/preguntas.yml');  #Parciando archivo
         $Preguntas = $Archivo_parseado["preguntas"];        #tiene un elemento que tiene las 25 preguntas
         shuffle($Preguntas);                                #Mezclamos las pregs
 

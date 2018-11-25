@@ -48,6 +48,23 @@ class DefaultController extends AbstractController
         return [$Preguntas, $Respuestas_mezcladas];
         
     }
+    
+    public function MostrarRtas(){
+
+        if (file_Exists (__DIR__.'/preguntas_ultimo_examen.yml') ){
+       
+            $Preguntas = $this->Parsear_Archivo("/preguntas_ultimo_examen.yml");
+    	    $Respuestas = $this->Parsear_Archivo("/rtas_ultimo_examen.yml");
+
+    	    return $this->render('default/MostrarRtas.html.twig', ["preguntas" => $Preguntas, "Respuestas_mezcladas" => $Respuestas]);
+        }
+        //No puedo mostrar las rtas de un examen que no se genero
+        else{
+            return $this->render('default/No_existe_examen.html.twig');
+        }
+
+    }
+
 
     public function index()
     {

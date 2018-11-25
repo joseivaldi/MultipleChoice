@@ -1,3 +1,7 @@
 index:
      path: /
      controller: App\Controller\DefaultController::index
+
+Mostrar_Rtas:     
+      path: /MostrarRtas
+      controller: App\Controller\DefaultController::MostrarRtas

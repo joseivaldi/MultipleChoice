@@ -1,3 +1,4 @@
 # MultipleChoice
 Crea dos archivos html por cada tema, uno con todas respuestas y el segundo que colorea las respuestas correctas. Para realizar un tema nuevo debemos hacerlo de froma "manual", recargandando la pagina. 
 Nuestros errores fueron malentendidos con el enunciado dado en clase, ya que entendimos que debiamos usar un framework para realizarlo. Por esta razon hicimos el proyecto con Symfony, y cerca de terminarlo nos dimos cuenta hablamos con otros compañeros que lo hecho estaba mal. Asi y todo decidimos dejar lo hecho, ya que tomo mucho trabajo hacerlo e igual consideramos que cumplia con la consigna en general, y ademas no nos creiamos capaces de llegar con el tiempo restante.
+En  nuestras limitaciones se encuentra la falta de Css Grid, que aunque era opcional queriamos usarlo pero no llegamos con el tiempo a aprender como se usa porque nso consumio mucho el aprendizaje de Symfony que creimos era necesario. 
